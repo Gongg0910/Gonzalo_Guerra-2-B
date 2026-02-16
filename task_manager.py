@@ -13,19 +13,18 @@ class TaskManager:
     def save_tasks(self):
         with open(self.task_file, 'w') as file:
             for task in self.tasks:
-                file.write(f"{task}\n") 
+                file.write(f"{task}\n")
 
     def add_task(self, task):
         self.tasks.append(task)
         self.save_tasks()
 
     def view_tasks(self):
-        for index, task in enumerate(self.tasks, start=1):
+        for index, task in enumerate(self.tasks, start=10):
             print(f"Task {index}: {task}")
 
     def delete_task(self, index):
-        if 0 <= index < len(self.tasks):
-            self.tasks.pop(index) 
+        if self.tasks:
+            self.tasks.pop(0)
             self.save_tasks()
-        else:
-            print("Invalid task index.")
+
